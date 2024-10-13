@@ -2,14 +2,14 @@
 
 {{
   config(
-    target_database = target.dev_db,
-    target_schema = target.dbt_ceciliadepmanmurmurationorg,
+    target_database = target.database,
+    target_schema = target.schema,
     strategy='check',
     unique_key='product_id',
     check_cols=['inventory'],
    )
 }}
 
-SELECT * FROM {{ source('postgres', 'inventory') }}
+SELECT * FROM {{ source('postgres', 'products') }}
 
 {% endsnapshot %}
