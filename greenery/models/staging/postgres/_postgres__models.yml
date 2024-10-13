@@ -1,0 +1,28 @@
+
+version: 2
+
+models:
+  - name: stg_postgres_addresses
+    description: "address data from postgres"
+    # columns:
+    #   - name: address_id
+    #     description: "The primary key for this table"
+    #     data_tests:
+    #       - unique
+    #       - not_null
+
+  - name: stg_postgres_events
+    description: "events data from postgres"
+  - name: stg_postgres_orders
+    description: "orders data from postgres"
+  - name: stg_postgres_order_items
+    description: "order items data from postgres"
+  - name: stg_postgres_products
+    description: "products data from postgres"
+  - name: stg_postgres_promos
+    description: "promos data from postgres"
+  - name: stg_postgres_superheroes
+    description: "superheroes data from postgres"
+  - name: stg_postgres_users
+    description: "users data from postgres"
+
