@@ -1,14 +1,14 @@
 # Analytics engineering with dbt
-# Project 2
+# Project 3
 
 ## Part 1
 ###  What is the conversion rate?
 - 0.624567
-- model with answer:
+- model with answer: models/marts/core/fact__total_conversion_rate.sql
 
 ###  What is the conversion rate by product?
 - average: 0.469430133333
-- model with answer:
+- model with answer: - model with answer: models/marts/product/fact__product_conversion_rate.sql
 - full list here:![screenshot](product_conversion_rate_20241027.png)
 
 
