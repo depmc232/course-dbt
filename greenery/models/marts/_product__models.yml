@@ -1,0 +1,43 @@
+
+version: 2
+
+models:
+  - name: marketing/fact__order_status
+    description: "order status per user"
+    columns:
+      - name: user_id
+        data_tests:
+          - not null
+
+  - name: product/fact__sessions
+    description: "session summaries"
+    columns:
+      - name: session_id
+        data_tests:
+          - not null
+      - name: count__page_view
+        tests:
+          - dbt_utils.accepted_range:
+              min_value: 0
+              max_value: 1
+      - name: count__add_to_cart
+        tests:
+          - dbt_utils.accepted_range:
+              min_value: 0
+              max_value: 1
+      - name: count__checkout
+        tests:
+          - dbt_utils.accepted_range:
+              min_value: 0
+              max_value: 1
+      - name: count__package_shipped
+        tests:
+          - dbt_utils.accepted_range:
+              min_value: 0
+              max_value: 1
+      - name: session_length
+        data_tests:
+          - dbt_expectations.expect_column_values_to_match_like_pattern_list:
+                like_pattern_list: ["%minutes"]
+                match_on: any
+  
