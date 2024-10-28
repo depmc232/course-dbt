@@ -7,7 +7,7 @@ with all_sessions as (
 ),
 purchases as (
     select 
-        {{ agg_events('checkout',sum) }} as purchase_events 
+        {{ agg_events('checkout','sum') }} as purchase_events 
     from {{ ref('stg_postgres__events') }} events
 )
 

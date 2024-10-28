@@ -4,25 +4,25 @@ with all_product_views as (
     select 
         product_id
         ,count(distinct session_id) total_product_sessions
-    from {{ ref('stg_postgres__events') }} events
+    from {{ ref('stg_postgres__events') }}
     where event_type='page_view'
     group by 1
 ),
 all_product_purchases as (
     select 
         oi.product_id
-        ,count(distinct e.session_id) as product_purchase_events
-    from {{ ref('stg_postgres__events') }} events e
-    left join {{ ref('stg_postgres__order_items') }} oi 
+        ,count(distinct session_id) as product_purchase_events
+    from {{ ref('stg_postgres__events') }} 
+    left join {{ ref('stg_postgres__order_items') }} as oi 
         using(order_id)
-    where e.event_type='checkout'
+    where event_type='checkout'
     group by 1
 ),
 products as (
     select 
     distinct product_id
     ,name
-    {{ ref('stg_postgres__products') }}
+    from {{ ref('stg_postgres__products') }}
 )
 select
     product_id
