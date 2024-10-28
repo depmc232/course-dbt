@@ -1,0 +1,34 @@
+version: 2
+
+macros:
+  - name: agg_events
+    description: |
+      This macro applies an aggregate operation to an event type. 
+      It takes two arguments:
+      
+      - `event_type`: The event type to be aggregated (e.g., 'page_view', 'checkout').
+      - `agg_op`: The SQL aggregation function to be applied (e.g., 'SUM', 'COUNT').
+
+      The macro returns a SQL expression that counts or sums the number of occurrences for the given event type.
+
+    arguments:
+      - name: event_type
+        description: The event type to be filtered (e.g., 'page_view', 'checkout').
+        type: string
+        required: true
+
+      - name: agg_op
+        description: The aggregate function to be applied (e.g., 'SUM', 'COUNT').
+        type: string
+        required: true
+
+    examples:
+      - code: |
+          {{ agg_events('checkout', 'SUM') }}
+        description: |
+          Applies the `SUM` aggregation function to count the number of 'checkout' events.
+          
+      - code: |
+          {{ agg_events('page_view', 'COUNT') }}
+        description: |
+          Applies the `COUNT` aggregation function to count the number of 'page_view' events.
